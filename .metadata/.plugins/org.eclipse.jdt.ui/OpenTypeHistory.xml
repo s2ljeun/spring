@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+<typeInfo handle="=studentSpring/G:\/jieun\/study3\/studentSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(Controller.class[Controller" modifiers="1537" timestamp="1667353935981"/>
+<typeInfo handle="=studentSpring/G:\/jieun\/study3\/studentSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(AbstractCommandController.class[AbstractCommandController" modifiers="1049633" timestamp="1667353935981"/>
+<typeInfo handle="=boardSpring/src&lt;board.dao{BoardDAO.java[BoardDAO" modifiers="513" timestamp="1667437437227"/>
+<typeInfo handle="=boardSpring/C:\/Program Files\/Java\/jdk1.8.0_341\/jre\/lib\/rt.jar&lt;javax.naming.ldap(Control.class[Control" modifiers="1537" timestamp="1661484855563"/>
+<typeInfo handle="=boardSpring/G:\/jieun\/study3\/boardSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(AbstractCommandController.class[AbstractCommandController" modifiers="1049633" timestamp="1667353935981"/>
+<typeInfo handle="=boardSpring/G:\/jieun\/study3\/boardSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(Controller.class[Controller" modifiers="1537" timestamp="1667353935981"/>
+<typeInfo handle="=memberSpring/G:\/jieun\/study3\/memberSpring\/WebContent\/WEB-INF\/lib\/org.springframework.core-3.1.0.M1.jar&lt;org.springframework.core(ControlFlow.class[ControlFlow" modifiers="1537" timestamp="1667353935856"/>
+<typeInfo handle="=memberSpring/src&lt;member.dao{MemberDAO.java[MemberDAO" modifiers="513" timestamp="1667440718478"/>
+<typeInfo handle="=memberSpring/G:\/jieun\/study3\/memberSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(AbstractCommandController.class[AbstractCommandController" modifiers="1049633" timestamp="1667353935981"/>
+<typeInfo handle="=memberSpring/G:\/jieun\/study3\/memberSpring\/WebContent\/WEB-INF\/lib\/org.springframework.web.servlet-3.1.0.M1.jar&lt;org.springframework.web.servlet.mvc(Controller.class[Controller" modifiers="1537" timestamp="1667353935981"/>
+</typeInfoHistroy>

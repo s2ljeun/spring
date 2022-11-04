@@ -1,0 +1,10 @@
+package member;
+
+import org.springframework.stereotype.Controller;
+import member.dao.MemberDAO;
+
+@Controller
+public class MemberController {
+
+	private MemberDAO memberDAO;
+}

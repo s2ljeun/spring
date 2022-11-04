@@ -1,0 +1,16 @@
+package student;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+//java annotation / 메소드 단위로 접근
+// 1. <bean class="student.StudentController">
+// 2. bean에 등록했던 각 Controller를 @RequestMapping
+@Controller
+public class StudentController {
+
+	@RequestMapping(value="/student_index.do")
+	public String student_index() {
+		return "/student";
+	}
+}

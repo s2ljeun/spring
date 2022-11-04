@@ -1,0 +1,57 @@
+package board;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import board.dao.BoardDAO;
+import board.dto.BoardDTO;
+
+@Controller
+public class BoardController {
+	@Autowired
+	private BoardDAO boardDAO;
+	
+	@RequestMapping(value="/list_board.do")
+	public String boardList(HttpServletRequest req, @RequestParam(required = false) String pageNum) {
+		//required = false를 적어주면 null 값이 들어와도 일단 넘어간다
+		int pageSize = 5;
+		if (pageNum == null){
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int startRow = (currentPage-1) * pageSize + 1;
+		int endRow = startRow + pageSize - 1;
+		int countRow = boardDAO.getCount();
+		if (endRow > countRow) endRow = countRow;
+		
+		List<BoardDTO> list = boardDAO.listBoard(startRow, endRow);
+		int num = countRow - (startRow - 1);
+		
+		req.setAttribute("listBoard", list);
+		req.setAttribute("num", num);
+		
+		int pageCount = countRow / pageSize + (countRow%pageSize==0 ? 0 : 1);
+		int pageBlock = 3;
+		int startPage = (currentPage - 1) / pageBlock * pageBlock + 1;
+		int endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) endPage = pageCount;
+		
+		req.setAttribute("pageCount", pageCount);
+		req.setAttribute("pageBlock", pageBlock);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		
+		return "/list";
+	}
+	
+	@RequestMapping(value="/content_board.do")
+	
+	
+	
+}

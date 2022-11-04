@@ -1,0 +1,29 @@
+package member;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+import member.dao.MemberDAO;
+import member.dto.MemberDTO;
+
+public class LoginOkController implements Controller {
+	
+	private MemberDAO memberDAO;
+	
+	public void setMemberDAO(MemberDAO memberDAO) {
+		this.memberDAO = memberDAO;
+	}
+	
+	@Override
+	public ModelAndView handleRequest(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		String id = req.getParameter("id");
+		String passwd = req.getParameter("passwd");
+		String saveId = req.getParameter("saveId");
+		
+		MemberDTO dto = memberDAO.getMember(id);
+	}
+
+}

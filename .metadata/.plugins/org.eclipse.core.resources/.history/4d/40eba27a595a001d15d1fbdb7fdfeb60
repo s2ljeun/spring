@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="WEB-INF/jsp" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<bean name="/hello.do" class="controller.HelloController"></bean> <!-- cmd.equals="/hello.do" / controller 안의 HelloController 찾아가 -->
+</beans>

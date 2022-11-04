@@ -1,0 +1,13 @@
+INDEX VERSION 1.4+G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1662674519.index
+1308904123.index
+3721828539.index
+3182223787.index
+1832155878.index
+156956656.index
+224459450.index
+3523208673.index
+3271193799.index
+1156064791.index
+568371422.index
+2150827391.index
