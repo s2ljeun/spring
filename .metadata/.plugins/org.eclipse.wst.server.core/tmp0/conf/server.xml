@@ -160,7 +160,7 @@
       </Context>
       <Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\boardSpring" path="/boardSpring" reloadable="true" source="org.eclipse.jst.jee.server:boardSpring">
       	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxAction="20" maxIdle="10" maxWait="-1" name="jdbc/oracle" password="bigdata02" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="bigdata02"/>
-      </Context><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\memberSpring" path="/memberSpring" reloadable="true" source="org.eclipse.jst.jee.server:memberSpring"/></Host>
+      </Context><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\memberSpring" path="/memberSpring" reloadable="true" source="org.eclipse.jst.jee.server:memberSpring"/><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopSpring" path="/shopSpring" reloadable="true" source="org.eclipse.jst.jee.server:shopSpring"/><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\test" path="/test" reloadable="true" source="org.eclipse.jst.jee.server:test"/></Host>
     </Engine>
   </Service>
 </Server>

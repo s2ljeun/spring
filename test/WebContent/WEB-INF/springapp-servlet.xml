@@ -8,5 +8,10 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<bean id="multipartResolver"
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	 
+	<bean class="controller.FileUploadController" />
+	
 	<bean name="/hello.do" class="controller.HelloController"></bean> <!-- cmd.equals="/hello.do" / controller 안의 HelloController 찾아가 -->
 </beans>
