@@ -19,16 +19,16 @@ public class ProductList {
 	Hashtable<String, List<ProductDTO>> ht;
 	private JdbcTemplate jdbcTemplate;
 	
+	public ProductList(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+		ht = new Hashtable<>();
+	}
+	
+	/*
 	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}
-
-	private PreparedStatement ps;
-	private ResultSet rs;
-	
-	public ProductList() {
-		ht = new Hashtable<>();
-	}
+	*/
 
 	private MyRowMapper mapper = new MyRowMapper();
 	class MyRowMapper implements RowMapper<ProductDTO>{
@@ -52,12 +52,12 @@ public class ProductList {
 		
 	}
 	
-	public List<ProductDTO> selectBySpec(String pspec) throws SQLException {
+	public List<ProductDTO> selectBySpec(String pspec) {
 		if (ht.containsKey(pspec)) {
 			return ht.get(pspec);
 		}
 		
-		try {
+		try { //try절 필요없다고 하는데...?(db관리를 알아서 해준다) ★ throws 구문을 떼면 됨
 			String sql = "select * from product where pspec = ?";			
 			List<ProductDTO> list = jdbcTemplate.query(sql, mapper, pspec);			
 			ht.put(pspec, list);
@@ -68,11 +68,11 @@ public class ProductList {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return null; //try절이 빠지면 이 return null도 필요없을 것 같다(getProduct빼고)
 	}
 	
 	
-	public List<ProductDTO> selectByCode(String code) throws SQLException {
+	public List<ProductDTO> selectByCode(String code) {
 		if (ht.containsKey(code)) {
 			return ht.get(code);
 		}

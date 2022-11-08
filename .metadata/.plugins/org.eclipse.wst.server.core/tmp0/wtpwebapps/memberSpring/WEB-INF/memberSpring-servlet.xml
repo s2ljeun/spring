@@ -13,7 +13,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+	<!-- <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName"/>
 		<property value="jdbc:oracle:thin:@localhost:1521:xe" name="url"/>
 		<property value="bigdata02" name="username"/>
@@ -26,7 +26,7 @@
 	
 	<bean id="memberDAO" class="member.dao.MemberDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"/>
-	</bean>
+	</bean> -->
 	
 	<bean class="member.MemberController"/>
 	

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import member.dao.MemberDAO;
 import member.dto.MemberDTO;
+import member.mybatis.MemberMapper;
 
 public class LoginOkController implements Controller {
 	
@@ -25,7 +26,8 @@ public class LoginOkController implements Controller {
 		String passwd = req.getParameter("passwd");
 		String saveId = req.getParameter("saveId");
 		
-		MemberDTO dto = memberDAO.getMember(id);
+		//MemberDTO dto = memberDAO.getMember(id);
+		MemberDTO dto = MemberMapper.getMember(id);
 		ModelAndView mav = new ModelAndView();
 		
 		if (dto == null){

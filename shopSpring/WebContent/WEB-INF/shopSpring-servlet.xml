@@ -12,6 +12,9 @@
 		<property name="prefix" value="WEB-INF/shop/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean id="multipartResolver"
+	 class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -32,9 +35,11 @@
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
 	
+	<!-- servlet에 올리면 싱글톤객체로 만들어져 서버에 기록 되므로 / 모든 서버 사용자가 productList를 공유하게 됨
 	<bean id="productList" class="shop.dao.ProductList">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	-->
 	
 	<bean class="shop.ShopController"/>
 	<bean class="shop.CategoryController"/>

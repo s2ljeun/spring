@@ -66,9 +66,9 @@ public class BoardDAOImpl implements BoardDAO {
 	public int insertBoard(BoardDTO dto) {
 		String sql = null;
 		if (dto.getNum() == 0) {
-			sql = "update board set re_step = re_step + 1";
+			sql = "update board set re_step = re_step + 1"; // ?
 			jdbcTemplate.update(sql);
-		}else {
+		}else { // ?
 			sql = "update board set re_step = re_step + 1 where re_step > ?";
 			jdbcTemplate.update(sql, dto.getRe_step());
 			dto.setRe_step(dto.getRe_step()+1);

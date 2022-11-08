@@ -29,7 +29,7 @@
 <body>
 <div align="center">
 	<b>±Û¼öÁ¤</b>
-	<form name="f" action="updatePro_board.do" method="post" onsubmit="return checkBoard()">
+	<form name="f" action="update_board.do" method="post" onsubmit="return checkBoard()">
 		<input type="hidden" name="num" value="${getBoard.num}" />
 		<table border="1" width="500">
 			<tr>

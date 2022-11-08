@@ -1,5 +1,6 @@
 package board;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -15,14 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import board.dao.BoardDAO;
 import board.dto.BoardDTO;
+import board.mybatis.BoardMapper;
 
 @Controller
 public class BoardController {
-	
-	@Autowired
-	private BoardDAO boardDAO;
 	
 	//required = false를 적어주면 null 값이 들어와도 일단 넘어간다
 	@RequestMapping(value="/list_board.do")
@@ -34,10 +32,13 @@ public class BoardController {
 		int pageSize = 5;
 		int startRow = (currentPage-1) * pageSize + 1;
 		int endRow = startRow + pageSize - 1;
-		int countRow = boardDAO.getCount();
+		//int countRow = boardDAO.getCount();
+		int countRow = BoardMapper.getCount();
 		if (endRow > countRow) endRow = countRow;
 		
-		List<BoardDTO> list = boardDAO.listBoard(startRow, endRow);
+		//List<BoardDTO> list = boardDAO.listBoard(startRow, endRow);
+
+		List<BoardDTO> list = BoardMapper.listBoard(startRow, endRow);
 		int num = countRow - (startRow - 1);
 		req.setAttribute("listBoard", list);
 		req.setAttribute("num", num);
@@ -68,7 +69,8 @@ public class BoardController {
 			dto.setRe_level(0);
 		}
 		dto.setIp(req.getRemoteAddr());
-		int res = boardDAO.insertBoard(dto);
+		//int res = boardDAO.insertBoard(dto);
+		int res = BoardMapper.insertBoard(dto);
 		if (res>0) {
 			req.setAttribute("msg", "게시글 등록 성공!! 게시글 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "list_board.do");
@@ -81,7 +83,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/content_board.do")
 	public String content_board(HttpServletRequest req, @RequestParam int num){
-		BoardDTO dto = boardDAO.getBoard(num, "content");
+		//BoardDTO dto = boardDAO.getBoard(num, "content");
+		BoardDTO dto = BoardMapper.getBoard(num, "content");
 		req.setAttribute("getBoard", dto);
 		return "/content";
 	}
@@ -94,7 +97,8 @@ public class BoardController {
 	@RequestMapping(value="/delete_board.do", method=RequestMethod.POST)
 	public String deletePro_board(HttpServletRequest req, 
 										@RequestParam Map<String, String> params) {
-		int res = boardDAO.deleteBoard(Integer.parseInt(params.get("num")), params.get("passwd"));
+		//int res = boardDAO.deleteBoard(Integer.parseInt(params.get("num")), params.get("passwd"));
+		int res = BoardMapper.deleteBoard(params);
 		if (res>0) {
 			req.setAttribute("msg", "게시글 삭제 성공!! 게시글 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "list_board.do");
@@ -111,7 +115,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/update_board.do", method=RequestMethod.GET)
 	public String updateForm_board(HttpServletRequest req, @RequestParam int num) {
-		BoardDTO dto = boardDAO.getBoard(num, "update");
+		//BoardDTO dto = boardDAO.getBoard(num, "update");
+		BoardDTO dto = BoardMapper.getBoard(num, "update");
 		req.setAttribute("getBoard", dto);
 		return "/updateForm";
 	}
@@ -119,7 +124,8 @@ public class BoardController {
 	@RequestMapping(value="/update_board.do", method=RequestMethod.POST)
 	public String updatePro_board(HttpServletRequest req, 
 							@ModelAttribute BoardDTO dto, BindingResult result) {
-		int res = boardDAO.updateBoard(dto);
+		//int res = boardDAO.updateBoard(dto);
+		int res = BoardMapper.updateBoard(dto);
 		if (res>0) {
 			req.setAttribute("msg", "게시글 수정 성공!! 게시글 목록 페이지로 이동합니다.");
 			req.setAttribute("url", "list_board.do");

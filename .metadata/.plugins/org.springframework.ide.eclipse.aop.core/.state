@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
+<aop-project name="shopSpring"/>
 <aop-project name="test"/>
 <aop-project name="studentSpring"/>
 <aop-project name="boardSpring"/>

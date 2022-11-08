@@ -35,7 +35,7 @@
 						${pdto.pname}
 					</td>
 					<td>
-						<form action="mall_cartEdit.mall" method="post">
+						<form action="mall_cartEdit.do" method="post">
 							<input type="text" name="pqty" value="${pdto.pqty}" size="2">개
 							<input type="hidden" name="pnum" value="${pdto.pnum}">
 							<input type="submit" value="수정">
@@ -49,7 +49,7 @@
 						<fmt:formatNumber value="${pdto.price*pdto.pqty}" pattern="000,000"/>원<br>
 						${pdto.point*pdto.pqty}point
 					</td>
-					<td align="center"><a href="mall_cartDel.mall?pnum=${pdto.pnum}">삭제</a></td>
+					<td align="center"><a href="mall_cartDel.do?pnum=${pdto.pnum}">삭제</a></td>
 				</tr>
 				<c:set var="totalCartPrice" value="${totalCartPrice + pdto.price*pdto.pqty}"/>
 				<c:set var="totalCartPoint" value="${totalCartPoint + pdto.point*pdto.pqty}"/>
@@ -62,7 +62,7 @@
 				<font color="green">${totalCartPoint}</font>point
 			</td>
 			<td colspan="2">
-				[<a href="mall_order.mall?mode=cart">주문하기</a>]
+				[<a href="mall_order.do?mode=cart">주문하기</a>]
 				[<a href="javascript:history.go(-2)">계속쇼핑</a>]
 			</td>
 		</tr>

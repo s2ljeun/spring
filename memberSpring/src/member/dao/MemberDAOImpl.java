@@ -9,6 +9,7 @@ import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import member.dto.MemberDTO;
+import member.mybatis.MemberMapper;
 
 public class MemberDAOImpl implements MemberDAO {
 	

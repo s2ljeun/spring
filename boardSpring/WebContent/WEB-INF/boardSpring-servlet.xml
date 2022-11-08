@@ -13,7 +13,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName">
 			<value>jdbc/oracle</value>
 		</property>
@@ -26,7 +26,9 @@
 	
 	<bean id="boardDAO" class="board.dao.BoardDAOImpl">
 		<property name="jdbcTemplate" ref="jdbcTemplate"/>
-	</bean>
+	</bean> -->
+	
+	
 	
 	<bean class="board.BoardController" />
 	

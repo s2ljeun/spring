@@ -97,6 +97,7 @@
 		<item key="updateTextualMatches" value="false"/>
 		<item key="updateQualifiedNames" value="false"/>
 		<item key="patterns" value="*"/>
+		<item key="renameSubpackages" value="false"/>
 	</section>
 	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
 		<item key="GoIntoTopLevelTypeAction.isChecked" value="false"/>
@@ -112,5 +113,7 @@
 		<item key="SearchInAppLibs" value="true"/>
 	</section>
 	<section name="CallHierarchySearchScope">
+	</section>
+	<section name="BreadcrumbItemDropDown">
 	</section>
 </section>

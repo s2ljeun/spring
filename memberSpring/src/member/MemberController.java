@@ -16,14 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import member.dao.MemberDAO;
 import member.dto.MemberDTO;
+import member.mybatis.MemberMapper;
 
 @Controller
 public class MemberController {
 
-	@Autowired
-	private MemberDAO memberDAO;
 	
 	@RequestMapping(value="/index_member.do")
 	public String indexMember() {
@@ -32,17 +30,13 @@ public class MemberController {
 	
 	@RequestMapping(value="/list_member.do")
 	public String memberList(HttpServletRequest req,
-			@RequestParam(required=false) String mode,
-			@RequestParam(required=false) String search,
-			@RequestParam(required=false) String searchString
-			) {
-		// RequestParam Map<String, String> map 으로 받아서 (map은 없으면 안 받는다)
-		// if (!map.containsKey("mode"))
-		// map.get("search") 이런식으로 
-		
-		List<MemberDTO> list = null;
-		if (mode == null)	list = memberDAO.listMember();
-		else	list = memberDAO.findMember(search, searchString);
+			@RequestParam Map<String, String> map){
+				List<MemberDTO> list = null;
+				if (!map.containsKey("mode")) {
+					list = MemberMapper.listMember();
+				}else {
+					list = MemberMapper.findMember(map);
+				}
 		
 		req.setAttribute("listMember", list);
 		return "/member_list";
@@ -59,9 +53,7 @@ public class MemberController {
 		
 		try {
 			
-			boolean isMember = memberDAO.checkMember(
-					map.get("name"), map.get("ssn1"), map.get("ssn2")
-					);
+			boolean isMember = MemberMapper.checkMember(map);
 			
 			if (isMember) {
 				req.setAttribute("msg", "저희 회원이십니다. 로그인을 해 주세요!!");			
@@ -92,8 +84,8 @@ public class MemberController {
 	
 	@RequestMapping(value="/input_member.do", method=RequestMethod.POST) //member_input.jsp에서 post로 제출
 	public String memberInputOk(HttpServletRequest req, @ModelAttribute MemberDTO dto) {
-		
-		int res = memberDAO.insertMember(dto);
+
+		int res = MemberMapper.insertMember(dto);
 		if (res>0) {
 			req.setAttribute("msg", "회원등록성공!! 로그인을 해주세요.");			
 			return "forward:closeWindow.jsp";
@@ -108,7 +100,8 @@ public class MemberController {
 	
 	@RequestMapping(value="/update_member.do", method=RequestMethod.GET) // list에서 <a> => GET방식으로 이동해옴
 	public String memberUpdate(HttpServletRequest req, @RequestParam int no) {
-		MemberDTO dto = memberDAO.getMember(no);
+		//MemberDTO dto = memberDAO.getMember(no);
+		MemberDTO dto = MemberMapper.getMember(no);
 		req.setAttribute("getMember", dto);
 		
 		return "/member_update";
@@ -118,7 +111,8 @@ public class MemberController {
 	public String memberUpdatePro(HttpServletRequest req,
 			@ModelAttribute MemberDTO dto) {
 		
-		int res = memberDAO.updateMember(dto);
+		//int res = memberDAO.updateMember(dto);
+		int res = MemberMapper.updateMember(dto);
 		if (res>0) {
 			req.setAttribute("msg", "멤버 수정 성공!! 멤버 목록페이지로 이동합니다.");
 			req.setAttribute("url", "list_member.do");
@@ -133,7 +127,8 @@ public class MemberController {
 	
 	@RequestMapping(value="/delete_member.do")
 	public String memberDelete(HttpServletRequest req, @RequestParam int no) {
-		int res = memberDAO.deleteMember(no);
+		//int res = memberDAO.deleteMember(no);
+		int res = MemberMapper.deleteMember(no);
 		if (res>0) {
 			req.setAttribute("msg", "멤버 삭제 성공!! 멤버 목록페이지로 이동합니다.");
 			req.setAttribute("url", "list_member.do");
@@ -158,7 +153,8 @@ public class MemberController {
 			@RequestParam(required=false) String saveId
 			) {
 		
-		MemberDTO dto = memberDAO.getMember(id);
+		//MemberDTO dto = memberDAO.getMember(id);
+		MemberDTO dto = MemberMapper.getMember(id);
 		if (dto == null){
 			req.setAttribute("msg", "해당하는 아이디가 없습니다. 다시 확인하시고 입력해 주세요!!");
 			req.setAttribute("url", "login.do");
@@ -205,7 +201,8 @@ public class MemberController {
 			@RequestParam String ssn2,
 			@RequestParam(required=false  ) String id) {
 		
-		String msg = memberDAO.searchMember(name, ssn1, ssn2, id);
+		//String msg = memberDAO.searchMember(name, ssn1, ssn2, id);
+		String msg = MemberMapper.searchMember(name, ssn1, ssn2, id);
 		req.setAttribute("msg", msg);
 		
 		return "forward:closeWindow.jsp";
