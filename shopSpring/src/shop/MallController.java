@@ -17,6 +17,7 @@ import shop.dao.CategoryDAO;
 import shop.dao.ProductList;
 import shop.dto.CategoryDTO;
 import shop.dto.ProductDTO;
+import shop.mybatis.CategoryMapper;
 
 @Controller
 public class MallController {
@@ -36,22 +37,26 @@ public class MallController {
 			session.setAttribute("upPath", session.getServletContext().getRealPath("/images"));
 		}
 		if (session.getAttribute("clist") == null) {
-			List<CategoryDTO> clist = categoryDAO.listCate();
+			List<CategoryDTO> clist = CategoryMapper.listCate();//categoryDAO.listCate();
 			session.setAttribute("clist", clist);
 		}
 		ProductList plist = (ProductList)session.getAttribute("prodList");
 		if (plist == null) {
-			plist = new ProductList(jdbcTemplate);
+			plist = new ProductList();
 		}
-
-		List<ProductDTO> hitList, bestList, newList;
-		hitList = plist.selectBySpec("HIT");
-		bestList = plist.selectBySpec("BEST");
-		newList = plist.selectBySpec("NEW");
+		String[] str = new String[] {"HIT", "BEST", "NEW"};
+		for(String title : str) {
+			plist.selectBySpec(title);
+		}
 		session.setAttribute("prodList", plist);
-		req.setAttribute("hitList", hitList);
-		req.setAttribute("bestList", bestList);
-		req.setAttribute("newList", newList);
+		
+		//List<ProductDTO> hitList, bestList, newList;
+		//hitList = plist.selectBySpec("HIT");
+		//bestList = plist.selectBySpec("BEST");
+		//newList = plist.selectBySpec("NEW");
+		//req.setAttribute("hitList", hitList);
+		//req.setAttribute("bestList", bestList);
+		//req.setAttribute("newList", newList);
 		return "display/mall";
 	}
 	
@@ -60,11 +65,12 @@ public class MallController {
 		HttpSession session = req.getSession();
 		ProductList plist = (ProductList)session.getAttribute("prodList");
 		if (plist == null) {
-			plist = new ProductList(jdbcTemplate);
+			plist = new ProductList();
 		}
-		List<ProductDTO> prolist = plist.selectByCode(code);
+		//List<ProductDTO> prolist = plist.selectByCode(code);
+		plist.selectByCode(code);
 		session.setAttribute("prodList", plist);
-		req.setAttribute("pcode", prolist);
+		//req.setAttribute("pcode", prolist);
 		return "display/mall_cgProdList";
 	}
 	
@@ -73,7 +79,7 @@ public class MallController {
 		HttpSession session = req.getSession();
 		ProductList plist = (ProductList)session.getAttribute("prodList");
 		if (plist == null) {
-			plist = new ProductList(jdbcTemplate);
+			plist = new ProductList();
 		}
 		ProductDTO pdto = plist.getProduct(Integer.parseInt(map.get("pnum")), map.get("select"));
 		req.setAttribute("pdto", pdto);

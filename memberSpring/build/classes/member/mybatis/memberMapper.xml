@@ -8,10 +8,10 @@
 	</select>
 	
 	<select id="findMember" parameterType="java.util.Map" resultType="MemberDTO">
-		select * from jsp_member where #{search} = #{searchString}
+		select * from jsp_member where ${search} = #{searchString}
 	</select>
 	
-	<select id="checkMember" parameterType="java.util.Map" resultType="boolean">
+	<select id="checkMember" parameterType="java.util.Map" resultType="MemberDTO">
 		select * from jsp_member where ssn1=#{ssn1} and ssn2=#{ssn2}
 	</select>
 	
@@ -20,7 +20,7 @@
 		insert into jsp_member values(member_seq.nextval,
 										#{name},#{id},#{passwd},#{ssn1},
 										#{ssn2},#{email},#{hp1},#{hp2},
-										#{hp3},sysdate
+										#{hp3},sysdate)
 	</insert>
 	
 	
@@ -34,11 +34,11 @@
 	</select>
 	
 	
-	<insert id="updateMember" parameterType="MemberDTO">
+	<update id="updateMember" parameterType="MemberDTO">
 		update jsp_member set passwd=#{passwd}, email=#{email},
 								hp1=#{hp1}, hp2=#{hp2}, hp3=#{hp3}
 								where no = #{no}
-	</insert>
+	</update>
 	
 	<delete id="deleteMember" parameterType="Integer">
 		delete from jsp_member where no = #{no}

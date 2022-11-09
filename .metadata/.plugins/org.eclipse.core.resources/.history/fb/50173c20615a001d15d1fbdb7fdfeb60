@@ -1,5 +1,0 @@
-package student.dao;
-
-public interface StudentDAO {
-
-}

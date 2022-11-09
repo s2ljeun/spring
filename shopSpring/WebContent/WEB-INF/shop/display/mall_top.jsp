@@ -26,7 +26,7 @@
 					<a href="">HOME</a> | 
 					<a href="index_shop.do">관리자홈</a> | 
 					<a href="mall_shop.do">쇼핑몰홈</a> | 
-					<a href="cart.do">장바구니</a> | 
+					<a href="mall_cartList.do">장바구니</a> | 
 				</td>
 			</tr>
 			<tr>

@@ -18,22 +18,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import shop.dao.CategoryDAO;
-import shop.dao.ProductDAO;
 import shop.dto.CategoryDTO;
 import shop.dto.ProductDTO;
+import shop.mybatis.CategoryMapper;
+import shop.mybatis.ProductMapper;
 
 @Controller
 public class ProductController {
-	@Autowired
-	private ProductDAO productDAO;
-	
-	@Autowired
-	private CategoryDAO categoryDAO;
 	
 	@RequestMapping(value="/prod_input.do", method=RequestMethod.GET)
 	public String prod_input(HttpServletRequest req) {
-		List<CategoryDTO> clist = categoryDAO.listCate();
+		//List<CategoryDTO> clist = categoryDAO.listCate();
+		List<CategoryDTO> clist = CategoryMapper.listCate();
 		if (clist == null || clist.size() == 0) {
 			req.setAttribute("msg", "카테고리를 먼저 등록해 주세요!!");
 			req.setAttribute("url", "index_shop.do");
@@ -70,7 +66,8 @@ public class ProductController {
 		session.setAttribute("upPath", upPath);
 		dto.setPimage(filename);
 		dto.setPcategory_fk(req.getParameter("pcatecode") + req.getParameter("pcode"));
-		int res = productDAO.insertProd(dto);
+		//int res = productDAO.insertProd(dto);
+		int res = ProductMapper.insertProd(dto);
 		if (res>0) {
 			req.setAttribute("msg", "상품 등록 성공!! 상품 목록페이지로 이동합니다.");
 			req.setAttribute("url", "prod_list.do");
@@ -83,14 +80,16 @@ public class ProductController {
 	
 	@RequestMapping("/prod_list.do")
 	public String prod_list(HttpServletRequest req) {
-		List<ProductDTO> plist = productDAO.listProd();
+		//List<ProductDTO> plist = productDAO.listProd();
+		List<ProductDTO> plist = ProductMapper.listProd();
 		req.setAttribute("listProd", plist);
 		return "admin/prod_list";
 	}
 	
 	@RequestMapping("/prod_view.do")
 	public String prod_view(HttpServletRequest req, @RequestParam int pnum) {
-		ProductDTO dto = productDAO.getProduct(pnum);
+		//ProductDTO dto = productDAO.getProduct(pnum);
+		ProductDTO dto = ProductMapper.getProduct(pnum);
 		req.setAttribute("getProduct", dto);
 		return "admin/prod_view";		
 	}
@@ -98,7 +97,8 @@ public class ProductController {
 	
 	@RequestMapping("/prod_delete.do")
 	public String prod_delete(HttpServletRequest req, @RequestParam Map<String, String> map){
-		int res = productDAO.deleteProd(Integer.parseInt(map.get("pnum")));
+		//int res = productDAO.deleteProd(Integer.parseInt(map.get("pnum")));
+		int res = ProductMapper.deleteProd(Integer.parseInt(map.get("pnum")));
 		if (res>0) {
 			HttpSession session = req.getSession();
 			String upPath = (String)session.getAttribute("upPath");
@@ -118,7 +118,8 @@ public class ProductController {
 	
 	@RequestMapping(value="/prod_update.do", method=RequestMethod.GET)
 	public String prod_update(HttpServletRequest req, @RequestParam int pnum) {
-		ProductDTO dto = productDAO.getProduct(pnum);
+		//ProductDTO dto = productDAO.getProduct(pnum);
+		ProductDTO dto = ProductMapper.getProduct(pnum);
 		req.setAttribute("getProduct", dto);
 		return "admin/prod_update";
 	}
@@ -147,7 +148,8 @@ public class ProductController {
 			}
 			dto.setPimage(filename);
 		}
-		int res = productDAO.updateProd(dto);
+		//int res = productDAO.updateProd(dto);
+		int res = ProductMapper.updateProd(dto);
 		if (res>0) {
 			req.setAttribute("msg", "상품 수정 성공!! 상품 목록페이지로 이동합니다.");
 			req.setAttribute("url", "prod_list.do");

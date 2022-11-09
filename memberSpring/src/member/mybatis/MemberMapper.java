@@ -54,8 +54,9 @@ public class MemberMapper {
 	public static boolean checkMember(Map<String, String> map) {
 		SqlSession session = sqlMapper.openSession();
 		try {
-			boolean isMember = session.selectOne("checkMember", map);
-			return isMember;
+			MemberDTO dto = session.selectOne("checkMember", map);
+			if (dto == null) return false;
+			else return true;
 		}finally{
 			session.close();
 		}
@@ -140,6 +141,7 @@ public class MemberMapper {
 		}
 		
 		try {
+			
 			MemberDTO dto = session.selectOne("getMember", id);
 			String msg = null;
 			if (id == null) msg = "아이디 : " + dto.getId() + " 입니다.";
