@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import shop.dao.CategoryDAO;
 import shop.dao.ProductList;
 import shop.dto.CategoryDTO;
 import shop.dto.ProductDTO;
@@ -21,14 +20,8 @@ import shop.mybatis.CategoryMapper;
 
 @Controller
 public class MallController {
-
+	@Autowired
 	private ProductList productList;
-	
-	@Autowired
-	private CategoryDAO categoryDAO;
-	
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
 	
 	@RequestMapping("/mall_shop.do")
 	public String mall_shop(HttpServletRequest req) {
@@ -144,6 +137,27 @@ public class MallController {
 		}
 		
 		return "forward:mall_cartList.do";
+	}
+	
+	@RequestMapping("/mall_order.do")
+	public String mall_order(HttpServletRequest req, @RequestParam Map<String, String> map) {
+		if (!map.containsKey("map")){ //바로구매에서 왔다면
+			String pnum = map.get("pnum");
+			String select = map.get("select");
+			String pqty = map.get("pqty");
+			
+			HttpSession session = req.getSession();
+			ProductList plist = (ProductList)session.getAttribute("prodList");
+			ProductDTO dto = plist.getProduct(Integer.parseInt(pnum), select);
+			dto.setPqty(Integer.parseInt(pqty));
+			
+			List<ProductDTO> cartList = new ArrayList<>();
+			cartList.add(dto);
+		}else { //장바구니에서 왔다면
+			HttpSession session = req.getSession();
+			List<ProductDTO> cartList = (List)session.getAttribute("cart");
+		}
+		return "display/mall_order";
 	}
 }
 

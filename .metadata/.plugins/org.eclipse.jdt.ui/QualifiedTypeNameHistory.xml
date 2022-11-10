@@ -33,7 +33,6 @@
 <fullyQualifiedTypeName name="shop.dto.ProductDTO"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.JdbcTemplate"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
@@ -52,4 +51,5 @@
 <fullyQualifiedTypeName name="shop.mybatis.CategoryMapper"/>
 <fullyQualifiedTypeName name="shop.mybatis.MallMapper"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
 </qualifiedTypeNameHistroy>

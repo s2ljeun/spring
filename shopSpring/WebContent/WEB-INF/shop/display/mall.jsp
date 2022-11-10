@@ -7,17 +7,17 @@
 
 <div align="center"  style="overflow:scroll; width:100%; height:500">
 	<h3>Welcome to My Mall</h3>
-	<c:if test="${empty hitList}">
+	<c:if test="${empty prodList.ht.HIT}">
 		<b>HIT 상품이 없습니다.</b>
 	</c:if>
-	<c:if test="${not empty hitList}">
+	<c:if test="${not empty prodList.ht.HIT}">
 		<hr color="green" width="80%">
 		<font size="5">HIT</font>	
 		<hr color="green" width="80%">
 		<table border="0" width="80%">
 			<tr>
 				<c:set var="count" value="0" />
-				<c:forEach var="pdto" items="${hitList}">
+				<c:forEach var="pdto" items="${prodList.ht.HIT}">
 					<td align="center">
 						<a href="mall_prodView.do?pnum=${pdto.pnum}&select=HIT">
 							<img src="${upPath}/${pdto.pimage}" width="80" height="60">
@@ -35,17 +35,17 @@
 			</tr>
 		</table>
 	</c:if>
-	<c:if test="${empty bestList}">
+	<c:if test="${empty prodList.ht.BEST}">
 		<b>BEST 상품이 없습니다.</b>
 	</c:if>
-	<c:if test="${not empty bestList}">
+	<c:if test="${not empty prodList.ht.BEST}">
 		<hr color="green" width="80%">
 		<font size="5">BEST</font>	
 		<hr color="green" width="80%">
 		<table border="0" width="80%">
 			<tr>
 				<c:set var="count" value="0" />
-				<c:forEach var="pdto" items="${bestList}">
+				<c:forEach var="pdto" items="${prodList.ht.BEST}">
 					<td align="center">
 						<a href="mall_prodView.do?pnum=${pdto.pnum}&select=BEST">
 							<img src="${upPath}/${pdto.pimage}" width="80" height="60">
@@ -63,17 +63,17 @@
 			</tr>
 		</table>
 	</c:if>
-	<c:if test="${empty newList}">
+	<c:if test="${empty prodList.ht.NEW}">
 		<b>NEW 상품이 없습니다.</b>
 	</c:if>
-	<c:if test="${not empty newList}">
+	<c:if test="${not empty prodList.ht.NEW}">
 		<hr color="green" width="80%">
 		<font size="5">NEW</font>	
 		<hr color="green" width="80%">
 		<table border="0" width="80%">
 			<tr>
 				<c:set var="count" value="0" />
-				<c:forEach var="pdto" items="${newList}">
+				<c:forEach var="pdto" items="${prodList.ht.NEW}">
 					<td align="center">
 						<a href="mall_prodView.do?pnum=${pdto.pnum}&select=NEW">
 							<img src="${upPath}/${pdto.pimage}" width="80" height="60">

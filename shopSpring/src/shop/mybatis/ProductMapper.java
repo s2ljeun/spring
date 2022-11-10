@@ -2,19 +2,14 @@ package shop.mybatis;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import shop.dto.CategoryDTO;
 import shop.dto.ProductDTO;
-
 
 public class ProductMapper {
 	private static SqlSessionFactory sqlMapper;
@@ -24,7 +19,7 @@ public class ProductMapper {
 			Reader reader = Resources.getResourceAsReader(resource);
 			sqlMapper = new SqlSessionFactoryBuilder().build(reader);
 		}catch(IOException e) {
-			throw new RuntimeException("DB연결 오류 발생" + e.getMessage());
+			throw new RuntimeException("DB 연결 오류 발생!!" + e.getMessage());
 		}
 	}
 	
@@ -38,6 +33,7 @@ public class ProductMapper {
 			session.close();
 		}
 	}
+	
 	public static List<ProductDTO> listProd() {
 		SqlSession session = sqlMapper.openSession();
 		try {
@@ -47,15 +43,17 @@ public class ProductMapper {
 			session.close();
 		}
 	}
+	
 	public static ProductDTO getProduct(int pnum) {
 		SqlSession session = sqlMapper.openSession();
 		try {
-			ProductDTO dto = session.selectOne("getProd", pnum);
+			ProductDTO dto = session.selectOne("getProduct", pnum);
 			return dto;
 		}finally {
 			session.close();
 		}
 	}
+	
 	public static int deleteProd(int pnum) {
 		SqlSession session = sqlMapper.openSession();
 		try {
@@ -66,6 +64,7 @@ public class ProductMapper {
 			session.close();
 		}
 	}
+	
 	public static int updateProd(ProductDTO dto) {
 		SqlSession session = sqlMapper.openSession();
 		try {
@@ -76,9 +75,15 @@ public class ProductMapper {
 			session.close();
 		}
 	}
-	
-
 }
+
+
+
+
+
+
+
+
 
 
 

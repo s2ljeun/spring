@@ -10,4 +10,9 @@ public class ShopController {
 	public String index_shop() {
 		return "admin/main";
 	}
+	
+	@RequestMapping("/index.do")
+	public String index() {
+		return "redirect:index.jsp";
+	}
 }

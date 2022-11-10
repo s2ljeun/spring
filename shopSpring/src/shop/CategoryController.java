@@ -15,6 +15,8 @@ import shop.mybatis.CategoryMapper;
 
 @Controller
 public class CategoryController {
+	//@Autowired
+	//private CategoryDAO categoryDAO;
 	
 	@RequestMapping(value="/cate_input.do", method=RequestMethod.GET)
 	public String cate_input() {

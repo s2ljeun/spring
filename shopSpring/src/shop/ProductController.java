@@ -25,6 +25,11 @@ import shop.mybatis.ProductMapper;
 
 @Controller
 public class ProductController {
+	//@Autowired
+	//private ProductDAO productDAO;
+	
+	//@Autowired
+	//private CategoryDAO categoryDAO;
 	
 	@RequestMapping(value="/prod_input.do", method=RequestMethod.GET)
 	public String prod_input(HttpServletRequest req) {
@@ -82,6 +87,8 @@ public class ProductController {
 	public String prod_list(HttpServletRequest req) {
 		//List<ProductDTO> plist = productDAO.listProd();
 		List<ProductDTO> plist = ProductMapper.listProd();
+		String upPath = req.getServletContext().getRealPath("/images");
+		req.setAttribute("upPath", upPath);
 		req.setAttribute("listProd", plist);
 		return "admin/prod_list";
 	}
@@ -91,6 +98,8 @@ public class ProductController {
 		//ProductDTO dto = productDAO.getProduct(pnum);
 		ProductDTO dto = ProductMapper.getProduct(pnum);
 		req.setAttribute("getProduct", dto);
+		String upPath = req.getServletContext().getRealPath("/images");
+		req.setAttribute("upPath", upPath);
 		return "admin/prod_view";		
 	}
 	
@@ -121,6 +130,8 @@ public class ProductController {
 		//ProductDTO dto = productDAO.getProduct(pnum);
 		ProductDTO dto = ProductMapper.getProduct(pnum);
 		req.setAttribute("getProduct", dto);
+		String upPath = req.getServletContext().getRealPath("/images");
+		req.setAttribute("upPath", upPath);
 		return "admin/prod_update";
 	}
 	
