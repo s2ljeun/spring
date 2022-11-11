@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ezen.member.memberMapper">
+	<select id="listMember" resultType="MemberDTO">
+		select * from jsp_member
+	</select>
+	
+	<select id="findMember" parameterType="java.util.Map" resultType="MemberDTO">
+		select * from jsp_member where ${search} = #{searchString}
+	</select>
+	
+	<select id="checkMember" parameterType="java.util.Map" resultType="MemberDTO">
+		select * from jsp_member where ssn1=#{ssn1} and ssn2=#{ssn2}
+	</select>
+	
+	
+	<insert id="insertMember" parameterType="MemberDTO">
+		insert into jsp_member values(member_seq.nextval,
+										#{name},#{id},#{passwd},#{ssn1},
+										#{ssn2},#{email},#{hp1},#{hp2},
+										#{hp3},sysdate)
+	</insert>
+	
+	
+	<select id="getMember" parameterType="Integer" resultType="MemberDTO">
+		select * from jsp_member where no = #{no}
+	</select>
+	
+	
+	<select id="getMemberId" parameterType="String" resultType="MemberDTO">
+		select * from jsp_member where id = #{id}
+	</select>
+	
+	
+	<update id="updateMember" parameterType="MemberDTO">
+		update jsp_member set passwd=#{passwd}, email=#{email},
+								hp1=#{hp1}, hp2=#{hp2}, hp3=#{hp3}
+								where no = #{no}
+	</update>
+	
+	<delete id="deleteMember" parameterType="Integer">
+		delete from jsp_member where no = #{no}
+	</delete>
+	
+</mapper>

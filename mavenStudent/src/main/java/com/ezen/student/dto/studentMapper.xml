@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.ezen.student.dto.studentMapper">
+	<select id="listStudent" resultType="studentDTO"> <!-- configuration.xml에 alias로 별칭 지정 -->
+		select * from student
+	</select>
+	
+	<insert id="insertStudent" parameterType="studentDTO">
+		insert into student values(#{id}, #{name}, #{cname}) <!-- #{id} = DTO의 getId -->
+	</insert>
+	
+	<delete id="deleteStudent" parameterType="String">
+		delete from student where id = #{id} <!-- String param 1개밖에 없으므로 -->
+	</delete>
+	
+	<select id="findStudent" parameterType="String" resultType="studentDTO">
+		select * from student where name = #{name}
+	</select>
+	
+</mapper>

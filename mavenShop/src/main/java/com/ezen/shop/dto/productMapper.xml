@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+
+<mapper namespace="com.ezen.shop.productMapper">
+	<insert id="insertProd" parameterType="productDTO">
+		insert into product values(prod_seq.nextval, #{pname}, #{pcategory_fk}, #{pcompany}, 
+				#{pimage}, #{pqty}, #{price}, #{pspec}, #{pcontents}, #{point}, sysdate)
+	</insert>
+	
+	<select id="listProd" resultType="productDTO">
+		select * from product
+	</select>
+	
+	<select id="getProduct" resultType="productDTO" parameterType="int">
+		select * from product where pnum = #{pnum}
+	</select>
+	
+	<delete id="deleteProd" parameterType="int">
+		delete from product where pnum = #{pnum}
+	</delete>
+	
+	<update id="updateProd" parameterType="productDTO">
+		update product set pname=#{pname}, pcompany=#{pcompany}, pimage=#{pimage}, 
+			pqty=#{pqty}, price=#{price}, pspec=#{pspec}, pcontents=#{pcontents}, point=#{point}
+			where pnum = #{pnum}
+	</update>
+	
+</mapper> 	
+
+
+
+

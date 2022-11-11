@@ -156,7 +156,7 @@
       
       
       
-      <Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopSpring" path="/shopSpring" reloadable="true" source="org.eclipse.jst.jee.server:shopSpring"/></Host>
+      <Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="G:\jieun\study3\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\mavenShop" path="/shop" reloadable="true" source="org.eclipse.jst.jee.server:mavenShop"/></Host>
     </Engine>
   </Service>
 </Server>

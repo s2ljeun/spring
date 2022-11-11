@@ -156,7 +156,7 @@
       
       
       
-      <Context docBase="shopSpring" path="/shopSpring" reloadable="true" source="org.eclipse.jst.jee.server:shopSpring"/></Host>
+      <Context docBase="mavenShop" path="/shop" reloadable="true" source="org.eclipse.jst.jee.server:mavenShop"/></Host>
     </Engine>
   </Service>
 </Server>

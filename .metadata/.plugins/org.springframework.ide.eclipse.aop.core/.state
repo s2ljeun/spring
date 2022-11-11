@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="shopSpring"/>
+<aop-project name="mavenBoard"/>
 <aop-project name="test"/>
+<aop-project name="mavenStudent"/>
 <aop-project name="studentSpring"/>
 <aop-project name="boardSpring"/>
 <aop-project name="memberSpring"/>
