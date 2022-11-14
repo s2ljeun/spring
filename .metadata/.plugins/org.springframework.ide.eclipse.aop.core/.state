@@ -4,7 +4,9 @@
 <aop-project name="mavenBoard"/>
 <aop-project name="test"/>
 <aop-project name="mavenStudent"/>
+<aop-project name="mavenShop"/>
 <aop-project name="studentSpring"/>
 <aop-project name="boardSpring"/>
 <aop-project name="memberSpring"/>
+<aop-project name="mavenMember"/>
 </aop-reference-model>
