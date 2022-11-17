@@ -156,7 +156,11 @@
       
       
       
-      <Context docBase="mavenShop" path="/shop" reloadable="true" source="org.eclipse.jst.jee.server:mavenShop"/></Host>
+      <Context docBase="mavenShop" path="/shop" reloadable="true" source="org.eclipse.jst.jee.server:mavenShop"/><Context docBase="mavenFileUpload" path="/fileupload" reloadable="true" source="org.eclipse.jst.jee.server:mavenFileUpload"/>
+      
+      <Context docBase="testTeam" path="/testTeam" reloadable="true" source="org.eclipse.jst.jee.server:testTeam">
+      	<Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxAction="20" maxIdle="10" maxWait="-1" name="jdbc/oracle" password="bigdata02" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="bigdata02"/>
+      </Context></Host>
     </Engine>
   </Service>
 </Server>

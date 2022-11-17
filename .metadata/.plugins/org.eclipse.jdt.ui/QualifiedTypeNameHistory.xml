@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="member.dto.MemberDTO"/>
-<fullyQualifiedTypeName name="javax.servlet.http.Cookie"/>
 <fullyQualifiedTypeName name="student.dao.StudentDAO"/>
 <fullyQualifiedTypeName name="board.dao.BoardDAO"/>
 <fullyQualifiedTypeName name="member.dao.MemberDAO"/>
@@ -10,7 +8,6 @@
 <fullyQualifiedTypeName name="org.springframework.jdbc.IncorrectResultSetColumnCountException"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartHttpServletRequest"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartFile"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="org.springframework.web.multipart.MultipartRequest"/>
 <fullyQualifiedTypeName name="shop.dao.ProductDAO"/>
 <fullyQualifiedTypeName name="javax.swing.tree.RowMapper"/>
@@ -24,7 +21,6 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.JdbcTemplate"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-<fullyQualifiedTypeName name="java.io.IOException"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
@@ -40,7 +36,6 @@
 <fullyQualifiedTypeName name="shop.mybatis.CategoryMapper"/>
 <fullyQualifiedTypeName name="shop.mybatis.MallMapper"/>
 <fullyQualifiedTypeName name="com.ezen.student.service.StudentMapper"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
 <fullyQualifiedTypeName name="com.ezen.student.dto.StudentDTO"/>
 <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
 <fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
@@ -60,4 +55,9 @@
 <fullyQualifiedTypeName name="com.ezen.shop.service.CategoryMapper"/>
 <fullyQualifiedTypeName name="com.ezen.shop.dto.ProductDTO"/>
 <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="team.TeamDTO"/>
+<fullyQualifiedTypeName name="javax.sql.DataSource"/>
 </qualifiedTypeNameHistroy>

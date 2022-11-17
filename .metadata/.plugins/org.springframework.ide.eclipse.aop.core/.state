@@ -5,6 +5,7 @@
 <aop-project name="test"/>
 <aop-project name="mavenStudent"/>
 <aop-project name="mavenShop"/>
+<aop-project name="mavenFileUpload"/>
 <aop-project name="studentSpring"/>
 <aop-project name="boardSpring"/>
 <aop-project name="memberSpring"/>
